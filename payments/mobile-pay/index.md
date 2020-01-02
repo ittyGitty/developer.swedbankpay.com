@@ -27,6 +27,19 @@ customer." %}
                       transaction. The consumer will be redirected back to your
                       website after the completion of the payment." %}
 
+## Prerequisites
+
+To start integrating Swedbank Pay Mobile Pay, you need the following:
+
+* [HTTPS][https] enabled web server.
+* Agreement that includes Swedbank Pay Mobile Pay.
+* Obtained credentials (merchant Access Token) from Swedbank Pay through
+  Swedbank Pay Admin.
+
+## Introduction
+
+
+
 * When you have prepared your merchant/webshop site, you make a `POST` request
   towards Swedbank Pay with your Purchase information.
   You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
@@ -45,6 +58,14 @@ the Payment Link scenario, see [purchase flow](#purchase-flow).
 One-phase payment metods will not implement capture, cancellation or reversal.
 The options you can choose from when creating a payment with key operation set
 to Value Purchase are listed below.
+
+### Type of authorization (Intent)
+
+**Authorization (two-phase)**: The intent of a MobilePay purchase is always
+`Authorization`. The amount will be reserved but not charged.
+You will later (i.e. if a physical product, when you are ready to ship the
+purchased products) have to make a [Capture][mobilepay-capture] or
+[Cancel][mobilepay-cancel] request.
 
 ## Screenshots
 
@@ -126,3 +147,4 @@ sequenceDiagram
                          next_title="Next: Redirect" %}
 
 [paymentMethodsScreenshot]: /assets/img/checkout/payment_methods.PNG
+[https]: /#connection-and-protocol
