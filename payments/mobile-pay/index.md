@@ -38,8 +38,6 @@ To start integrating Swedbank Pay Mobile Pay, you need the following:
 
 ## Introduction
 
-
-
 * When you have prepared your merchant/webshop site, you make a `POST` request
   towards Swedbank Pay with your Purchase information.
   You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
@@ -51,28 +49,26 @@ To start integrating Swedbank Pay Mobile Pay, you need the following:
 * Finally you need to make a `GET` request towards Swedbank Pay with the
   `paymentID` received in the first step, which will return the purchase result.
 
+![Payex payment menu][paymentMethodsScreenshot]
 ## API requests
 
-The API requests depend on the payment instrument you are using when implementing
-the Payment Link scenario, see [purchase flow](#purchase-flow).
+The API requests depend on the payment instrument you are using when
+implementing the Payment Link scenario, see [purchase flow](#purchase-flow).
 One-phase payment metods will not implement capture, cancellation or reversal.
 The options you can choose from when creating a payment with key operation set
 to Value Purchase are listed below.
 
-### Type of authorization (Intent)
+## Intent
+
+The intent of the payment identifies how and when the charge will be
+effectuated. This determines the type of transaction used during the payment
+process.
 
 **Authorization (two-phase)**: The intent of a MobilePay purchase is always
 `Authorization`. The amount will be reserved but not charged.
 You will later (i.e. if a physical product, when you are ready to ship the
 purchased products) have to make a [Capture][mobilepay-capture] or
 [Cancel][mobilepay-cancel] request.
-
-## Screenshots
-
-When clicking the payment link, the consumer will be directed to a payment
-page, similar to the examples below, where payment information can be entered.
-
-![Payex payment menu][paymentMethodsScreenshot]
 
 ## Purchase flow
 
@@ -146,5 +142,7 @@ sequenceDiagram
                          next_href="redirect"
                          next_title="Next: Redirect" %}
 
-[paymentMethodsScreenshot]: /assets/img/checkout/payment_methods.PNG
+[paymentMethodsScreenshot]: /assets/img/mobilepay-screenshot-1.png
 [https]: /#connection-and-protocol
+[mobilepay-capture]: /payments/mobile-pay/after-payment#capture
+[mobilepay-cancel]: /payments/mobile-pay/after-payment#cancel
