@@ -39,13 +39,14 @@ To start integrating Swedbank Pay Mobile Pay, you need the following:
 ## Introduction
 
 * When you have prepared your merchant/webshop site, you make a `POST` request
-  towards Swedbank Pay with your Purchase information.
-  You will receive a Redirect URL, leading to a secure Swedbank Pay hosted
-  environment, in response.
-* You need to redirect the browser of the end-user/consumer to that URL so
-  that she may enter her MobilePay details .
-* When the payment is completed, Swedbank Pay will redirect the browser back
-  to your merchant/webshop site.
+  towards Swedbank Pay with your Purchase information. You will receive a
+  Redirect URL, leading to a secure Swedbank Pay hosted environment, in
+  response.
+* You need to redirect the browser of the end-user/consumer to that URL so that
+  she may enter her MobilePay details .
+* When the payment is completed, Swedbank Pay will redirect the browser back to
+  your merchant/webshop site. Remember to set the `completeUrl` to the page that
+  you want the costumer access after completion of the payment.
 * Finally you need to make a `GET` request towards Swedbank Pay with the
   `paymentID` received in the first step, which will return the purchase result.
 
